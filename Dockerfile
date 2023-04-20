@@ -1,15 +1,15 @@
 FROM alpine:3.17
 RUN apk -v --update add \
-        python \
+        python3 \
         py-pip \
         groff \
         less \
         mailcap \
 	curl \
         && \
-    pip install --upgrade awscli==2.9.14 s3cmd==2.3.0 python-magic && \
+    pip install --upgrade awscli s3cmd python-magic && \
     apk -v --purge del py-pip && \
-    rm /var/cache/apk/*
+    rm -rf /var/cache/apk/* /root/.cache/pip/*
 VOLUME /root/.aws
 VOLUME /project
 WORKDIR /project
