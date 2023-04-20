@@ -14,5 +14,12 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+    - name: Login to Docker Hub
+      uses: docker/login-action@v1
+      with:
+        username: fenidik
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag fenidik/aws-cli:latest
+      run: docker build . -t fenidik/aws-cli
+    - name: Push Docker Image
+      run: docker push fenidik/aws-cli
