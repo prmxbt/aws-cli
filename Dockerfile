@@ -7,8 +7,7 @@ RUN apk -v --update add \
         mailcap \
 	curl \
         && \
-    pip install --upgrade awscli s3cmd python-magic && \
-    apk -v --purge del py-pip && \
+    pip3 install --upgrade awscli && \
     rm -rf /var/cache/apk/* /root/.cache/pip/*
 VOLUME /root/.aws
 VOLUME /project
